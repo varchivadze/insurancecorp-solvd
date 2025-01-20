@@ -165,5 +165,5 @@ create table if not exists repair_orders (
     constraint fk_repair_order_workshop_workshops_id foreign key (workshop) references workshops(id)
     on update no action
     on delete cascade
-)
+);
 
