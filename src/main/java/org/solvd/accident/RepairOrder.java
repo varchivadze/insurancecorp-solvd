@@ -2,28 +2,37 @@ package org.solvd.accident;
 
 import org.solvd.services.Workshop;
 import org.solvd.staff.Employee;
-import org.solvd.support.Address;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class RepairOrder {
 
-    private long id;
+    private Long id;
     private LocalDate date;
     private Workshop workShop;
-    private Employee manager;
     private BigDecimal cost;
     private String description;
     private BigDecimal paid;
-    private boolean complete;
+    private Boolean complete;
 
-    public RepairOrder(long id) {
+    public RepairOrder() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getId() {
-        return id;
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public Workshop getWorkShop() {
@@ -32,14 +41,6 @@ public class RepairOrder {
 
     public void setWorkShop(Workshop workShop) {
         this.workShop = workShop;
-    }
-
-    public Employee getManager() {
-        return manager;
-    }
-
-    public void setManager(Employee manager) {
-        this.manager = manager;
     }
 
     public BigDecimal getCost() {
@@ -57,6 +58,7 @@ public class RepairOrder {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public BigDecimal getPaid() {
         return paid;
     }
@@ -65,12 +67,11 @@ public class RepairOrder {
         this.paid = paid;
     }
 
-    public boolean isComplete() {
+    public Boolean getComplete() {
         return complete;
     }
 
-    public void setComplete(boolean complete) {
+    public void setComplete(Boolean complete) {
         this.complete = complete;
     }
-
 }

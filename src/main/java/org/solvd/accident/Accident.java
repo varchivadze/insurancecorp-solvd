@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Accident {
 
-    private long id;
+    private Long id;
     private ZonedDateTime date;
     private Address placeOfAccident;
     private List<Vehicle> damagedVehicles;
@@ -18,12 +18,15 @@ public class Accident {
     private List<RepairOrder> repairs;
     private String notes;
 
-    public Accident(long id) {
-        this.id = id;
+    public Accident() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public ZonedDateTime getDate() {
@@ -50,11 +53,11 @@ public class Accident {
         this.damagedVehicles = damagedVehicles;
     }
 
-    public Vehicle getCulpritVehicles() {
+    public Vehicle getCulpritVehicle() {
         return culpritVehicle;
     }
 
-    public void setCulpritVehicles(Vehicle culpritVehicle) {
+    public void setCulpritVehicle(Vehicle culpritVehicle) {
         this.culpritVehicle = culpritVehicle;
     }
 

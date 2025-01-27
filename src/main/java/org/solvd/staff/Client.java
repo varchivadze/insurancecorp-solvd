@@ -1,6 +1,5 @@
 package org.solvd.staff;
 
-import org.solvd.accident.Accident;
 import org.solvd.accident.Vehicle;
 
 import java.math.BigDecimal;
@@ -9,18 +8,20 @@ import java.util.List;
 
 public class Client {
 
-    private long id;
+    private Long clientId;
     private Person person;
     private BigDecimal discount;
-    private List<Accident> accidents;
     private List<Vehicle> vehicles;
 
-    public long getId() {
-        return id;
+    public Client() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public Person getPerson() {
@@ -37,14 +38,6 @@ public class Client {
 
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
-    }
-
-    public List<Accident> getAccidents() {
-        return accidents;
-    }
-
-    public void setAccidents(List<Accident> accidents) {
-        this.accidents = accidents;
     }
 
     public List<Vehicle> getVehicles() {

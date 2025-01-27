@@ -4,30 +4,28 @@ import java.math.BigDecimal;
 
 public class Employee extends Person {
 
-    private Positions position;
+    private Long employeeId;
+    private String position;
     private BigDecimal salary;
     private BigDecimal bonus;
     private String passportId;
 
-    public String getPassportId() {
-        return passportId;
+    public Employee() {
     }
 
-    public void setPassportId(String passportId) {
-        this.passportId = passportId;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public Employee(long id) {
-        super(id);
-        this.salary = BigDecimal.ZERO;
-        this.bonus = BigDecimal.ZERO;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public Positions getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(Positions position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
@@ -45,5 +43,13 @@ public class Employee extends Person {
 
     public void setBonus(BigDecimal bonus) {
         this.bonus = bonus;
+    }
+
+    public String getPassportId() {
+        return passportId;
+    }
+
+    public void setPassportId(String passportId) {
+        this.passportId = passportId;
     }
 }

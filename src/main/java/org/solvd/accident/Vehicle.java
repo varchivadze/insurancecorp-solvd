@@ -8,17 +8,24 @@ import java.util.List;
 
 public class Vehicle {
 
-    private long id;
+    private Long id;
     private Person owner;
     private String made;
     private String model;
     private Year yearProduced;
     private String plateNumber;
     private String vin;
-    private int seats;
+    private Integer seats;
     private List<Insurance> insurances;
 
-    public Vehicle(long id) {
+    public Vehicle() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -28,22 +35,6 @@ public class Vehicle {
 
     public void setOwner(Person owner) {
         this.owner = owner;
-    }
-
-    public List<Insurance> getInsurances() {
-        return insurances;
-    }
-
-    public void addInsurance(Insurance insurance) {
-        this.insurances.add(insurance);
-    }
-
-    public void removeInsurance(Insurance insurance) {
-        this.insurances.remove(insurance);
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getMade() {
@@ -86,11 +77,19 @@ public class Vehicle {
         this.vin = vin;
     }
 
-    public int getSeats() {
+    public Integer getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
+    }
+
+    public List<Insurance> getInsurances() {
+        return insurances;
+    }
+
+    public void setInsurances(List<Insurance> insurances) {
+        this.insurances = insurances;
     }
 }

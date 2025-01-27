@@ -6,31 +6,22 @@ import java.time.LocalDate;
 
 public class Person {
 
-    private long id;
+    private Long id;
     private String name;
     private String surname;
     private LocalDate dob;
     private String telephoneNumber;
     private Address homeAddress;
 
-    public Address getHomeAddress() {
-        return homeAddress;
+    protected Person() {
     }
 
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
+    public Long getId() {
+        return id;
     }
 
-    protected Person(long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
     }
 
     public String getName() {
@@ -55,5 +46,21 @@ public class Person {
 
     public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
     }
 }
