@@ -10,7 +10,6 @@ public class Insurance {
     private Long id;
     private String policeNumber;
     private Vehicle insuredVehicle;
-    private InsuranceCompany insurer;
     private LocalDate insuredFrom;
     private LocalDate insuredTill;
     private BigDecimal insuranceCoverage;
@@ -41,14 +40,6 @@ public class Insurance {
 
     public void setInsuredVehicle(Vehicle insuredVehicle) {
         this.insuredVehicle = insuredVehicle;
-    }
-
-    public InsuranceCompany getInsurer() {
-        return insurer;
-    }
-
-    public void setInsurer(InsuranceCompany insurer) {
-        this.insurer = insurer;
     }
 
     public LocalDate getInsuredFrom() {

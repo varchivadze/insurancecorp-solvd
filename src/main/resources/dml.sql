@@ -104,12 +104,12 @@ where id = @accident_id;
 INSERT INTO repair_orders (order_date, workshop_id, cost, description, paid, complete, accidents_id)
 VALUES("2025-01-23", 1, 500, "Broken window", 0, 0, 1);
 
-INSERT INTO insurances (police_number, vehicle_id, insurance_company_id, insured_from, insured_till, insurance_coverage, oc)
+INSERT INTO insurances (police_number, vehicle_id, insured_from, insured_till, insurance_coverage, oc)
 VALUES 
-	("INS-1234", 1, 1, "2025-01-01", "2026-01-01", 50000.00, 1),
-    ("INS-5678", 2, 1, "2025-01-10", "2026-01-10", 40000.00, 1),
-    ("INS-9101", 3, 1, "2025-02-01", "2026-02-01", 60000.00, 1),
-    ("INS-1122", 4, 1, "2025-03-01", "2026-03-01", 70000.00, 1);
+	("INS-1234", 1, "2025-01-01", "2026-01-01", 50000.00, 1),
+    ("INS-5678", 2, "2025-01-10", "2026-01-10", 40000.00, 1),
+    ("INS-9101", 3, "2025-02-01", "2026-02-01", 60000.00, 1),
+    ("INS-1122", 4, "2025-03-01", "2026-03-01", 70000.00, 1);
 
 INSERT INTO addresses (country, city, postal_code, street, unit)
 VALUES ('for_delete', 'for_delete', '00000', 'Temp Street', 'Temp 1');

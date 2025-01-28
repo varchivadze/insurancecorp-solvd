@@ -129,9 +129,6 @@ create table if not exists insurances (
     primary key (id),
     constraint fk_insurances_vehicle_vehicles_id foreign key (vehicle_id) references vehicles(id)
         on update no action
-        on delete cascade,
-    constraint fk_insurances_insurance_company_insurance_companies_id foreign key (insurance_company_id) references insurance_companies(id)
-        on update no action
         on delete cascade
 );
 

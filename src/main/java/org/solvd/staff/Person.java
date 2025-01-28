@@ -13,7 +13,7 @@ public class Person {
     private String telephoneNumber;
     private Address homeAddress;
 
-    protected Person() {
+    public Person() {
     }
 
     public Long getId() {
@@ -62,5 +62,11 @@ public class Person {
 
     public void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%nPerson %s %s %s %s %s %nHome Address: %s",
+                id, name, surname, dob, telephoneNumber, homeAddress);
     }
 }

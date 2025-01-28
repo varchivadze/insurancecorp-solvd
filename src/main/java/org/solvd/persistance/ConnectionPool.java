@@ -62,4 +62,10 @@ public class ConnectionPool {
         return instance;
     }
 
+    public void releaseConnection(Connection connection) {
+        synchronized (connections) {
+            connections.add(connection);
+            connections.notifyAll();
+        }
+    }
 }
