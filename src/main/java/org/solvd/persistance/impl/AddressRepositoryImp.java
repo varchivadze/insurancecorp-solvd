@@ -1,9 +1,9 @@
 package org.solvd.persistance.impl;
 
 import org.solvd.persistance.AddressRepository;
-import org.solvd.persistance.CrudRepository;
 import org.solvd.persistance.ConnectionPool;
 import org.solvd.support.Address;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class AddressRepositoryImp implements AddressRepository {
     public void create(Address address) {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "insert into addresses(country, city, postal_code, street, unit) values (?,?,?,?,?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, address.getCountry());
             preparedStatement.setString(2, address.getCity());
             preparedStatement.setString(3, address.getPostalCode());
@@ -30,7 +30,7 @@ public class AddressRepositoryImp implements AddressRepository {
             while (resultSet.next()) {
                 address.setId(resultSet.getLong(1));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException("Unable to create address.", e);
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
@@ -46,7 +46,7 @@ public class AddressRepositoryImp implements AddressRepository {
         String statement = "select a.id as address_id, a.country as address_country, a.city as address_city, " +
                 "a.postal_code as address_postal_code, a.street as address_street, a.unit as address_unit " +
                 "from addresses a WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -67,7 +67,7 @@ public class AddressRepositoryImp implements AddressRepository {
         String statement = "select a.id as address_id, a.country as address_country, a.city as address_city," +
                 "a.postal_code as address_postal_code, a.street as address_street, a.unit as address_unit " +
                 "from addresses a";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             addresses = mapAddresses(resultSet);
         } catch (SQLException e) {
@@ -82,7 +82,7 @@ public class AddressRepositoryImp implements AddressRepository {
     public void update(Address address) {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "update addresses set country = ?, city = ?, postal_code = ? , street = ?, unit = ? WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, address.getCountry());
             preparedStatement.setString(2, address.getCity());
             preparedStatement.setString(3, address.getPostalCode());
@@ -102,7 +102,7 @@ public class AddressRepositoryImp implements AddressRepository {
     public void deleteById(Long id) {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "delete from addresses where id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
             preparedStatement.setLong(1, id);
         } catch (SQLException e) {
             throw new RuntimeException("Could not delete address", e);

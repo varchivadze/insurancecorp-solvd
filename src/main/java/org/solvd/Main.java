@@ -1,20 +1,13 @@
 package org.solvd;
 import org.solvd.service.AddressService;
-import org.solvd.service.PesoneService;
+import org.solvd.service.PersonService;
 import org.solvd.service.impl.AddressServiceImpl;
 import org.solvd.service.impl.PersonServiceImp;
-import org.solvd.staff.Person;
-import org.solvd.support.Address;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
         AddressService addressService = new AddressServiceImpl();
-        PesoneService personeService = new PersonServiceImp();
+        PersonService personeService = new PersonServiceImp();
 //
         personeService.deleteById(11L);
         personeService.deleteById(12L);

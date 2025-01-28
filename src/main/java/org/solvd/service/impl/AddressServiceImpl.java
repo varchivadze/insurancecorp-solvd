@@ -1,7 +1,6 @@
 package org.solvd.service.impl;
 
 import org.solvd.persistance.AddressRepository;
-import org.solvd.persistance.CrudRepository;
 import org.solvd.persistance.impl.AddressRepositoryImp;
 import org.solvd.service.AddressService;
 import org.solvd.support.Address;
@@ -13,7 +12,7 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
 
-    public  AddressServiceImpl() {
+    public AddressServiceImpl() {
         this.addressRepository = new AddressRepositoryImp();
     }
 

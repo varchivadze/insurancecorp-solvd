@@ -1,10 +1,10 @@
 package org.solvd.persistance;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class ConnectionPool {
@@ -51,7 +51,7 @@ public class ConnectionPool {
                     throw new RuntimeException("Unable to get connection.", e);
                 }
             }
-            return connections.remove(connections.size() -1);
+            return connections.remove(connections.size() - 1);
         }
     }
 

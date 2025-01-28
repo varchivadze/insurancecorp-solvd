@@ -15,4 +15,5 @@ public interface CrudRepository<T> {
     void update(T address)throws SQLException;
 
     void deleteById(Long id)throws SQLException;
+
 }

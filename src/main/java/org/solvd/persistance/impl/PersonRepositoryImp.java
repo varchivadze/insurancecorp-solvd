@@ -7,8 +7,6 @@ import org.solvd.support.Address;
 
 import java.sql.*;
 import java.util.ArrayList;
-
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +25,6 @@ public class PersonRepositoryImp implements PersonRepository {
             preparedStatement.setString(4, person.getTelephoneNumber());
             preparedStatement.setLong(5, person.getHomeAddress().getId());
 
-
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
@@ -39,7 +36,6 @@ public class PersonRepositoryImp implements PersonRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-
     }
 
     @Override

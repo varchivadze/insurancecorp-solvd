@@ -1,17 +1,14 @@
 package org.solvd.service.impl;
 
-import org.solvd.persistance.AddressRepository;
 import org.solvd.persistance.PersonRepository;
-import org.solvd.persistance.impl.AddressRepositoryImp;
 import org.solvd.persistance.impl.PersonRepositoryImp;
-import org.solvd.service.AddressService;
-import org.solvd.service.PesoneService;
+import org.solvd.service.PersonService;
 import org.solvd.staff.Person;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class PersonServiceImp implements PesoneService {
+public class PersonServiceImp implements PersonService {
 
     private final PersonRepository personRepository;
 
@@ -33,7 +30,7 @@ public class PersonServiceImp implements PesoneService {
     @Override
     public Person retrieveById(Long id) {
         try {
-            return personRepository.findById(id).orElseThrow(()->new SQLException("Could not handle find person by id " + id.toString()));
+            return personRepository.findById(id).orElseThrow(() -> new SQLException("Could not handle find person by id " + id.toString()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
