@@ -125,7 +125,7 @@ public class EmployeeRepositoryImp implements EmployeeRepository {
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not update company ID %d", companyId), e);
+            throw new RuntimeException(String.format("Could not update company ID %d for employee", companyId), e);
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
