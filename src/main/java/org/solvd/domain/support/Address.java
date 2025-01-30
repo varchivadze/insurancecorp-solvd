@@ -1,4 +1,4 @@
-package org.solvd.support;
+package org.solvd.domain.support;
 
 import java.lang.annotation.Documented;
 

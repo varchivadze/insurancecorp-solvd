@@ -1,6 +1,6 @@
-package org.solvd.services;
+package org.solvd.domain.services;
 
-import org.solvd.accident.Vehicle;
+import org.solvd.domain.accident.Vehicle;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

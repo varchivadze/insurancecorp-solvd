@@ -1,7 +1,7 @@
-package org.solvd.accident;
+package org.solvd.domain.accident;
 
-import org.solvd.staff.Employee;
-import org.solvd.support.Address;
+import org.solvd.domain.staff.Employee;
+import org.solvd.domain.support.Address;
 
 import java.time.ZonedDateTime;
 import java.util.List;

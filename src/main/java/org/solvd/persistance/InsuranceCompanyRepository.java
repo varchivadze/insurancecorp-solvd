@@ -1,12 +1,10 @@
 package org.solvd.persistance;
 
-import org.solvd.services.InsuranceCompany;
+import org.solvd.domain.services.InsuranceCompany;
 
-import java.util.List;
+import java.sql.SQLException;
 
-public interface InsuranceCompanyRepository {
+public interface InsuranceCompanyRepository extends CrudRepository<InsuranceCompany> {
 
-    void create(InsuranceCompany insuranceCompany);
-
-    List<InsuranceCompany> getAll();
+    InsuranceCompany create(InsuranceCompany insuranceCompany) throws SQLException;
 }

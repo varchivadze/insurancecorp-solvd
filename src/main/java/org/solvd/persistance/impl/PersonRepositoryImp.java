@@ -1,9 +1,9 @@
 package org.solvd.persistance.impl;
 
+import org.solvd.domain.staff.Person;
+import org.solvd.domain.support.Address;
 import org.solvd.persistance.ConnectionPool;
 import org.solvd.persistance.PersonRepository;
-import org.solvd.staff.Person;
-import org.solvd.support.Address;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,8 +14,7 @@ public class PersonRepositoryImp implements PersonRepository {
 
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
-    @Override
-    public void create(Person person) {
+    public Person create(Person person) {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "insert into persons (name, surname, dob, telephone_number, address_id) values (?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)) {
@@ -31,6 +30,7 @@ public class PersonRepositoryImp implements PersonRepository {
             while (resultSet.next()) {
                 person.setId(resultSet.getLong(1));
             }
+            return person;
         } catch (SQLException e) {
             throw new RuntimeException("Unable to create person.", e);
         } finally {
@@ -121,7 +121,7 @@ public class PersonRepositoryImp implements PersonRepository {
         }
     }
 
-    private Person mapRow(ResultSet resultSet) throws SQLException {
+    protected Person mapRow(ResultSet resultSet) throws SQLException {
         Person person = new Person();
         person.setId(resultSet.getLong("person_id"));
         person.setName(resultSet.getString("name"));
@@ -134,6 +134,4 @@ public class PersonRepositoryImp implements PersonRepository {
 
         return person;
     }
-
-
 }

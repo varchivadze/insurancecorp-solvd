@@ -1,18 +1,8 @@
 package org.solvd.service;
 
-import org.solvd.staff.Person;
+import org.solvd.domain.staff.Person;
 
-import java.util.List;
+public interface PersonService extends CrudService<Person> {
 
-public interface PersonService {
-
-    Person create(Person person);
-
-    Person retrieveById(Long id);
-
-    List<Person> retrieveAll();
-
-    Person update(Person person);
-
-    void deleteById(Long id);
+    Person create(Person t);
 }

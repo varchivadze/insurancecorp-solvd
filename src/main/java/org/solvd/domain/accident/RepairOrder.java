@@ -1,7 +1,6 @@
-package org.solvd.accident;
+package org.solvd.domain.accident;
 
-import org.solvd.services.Workshop;
-import org.solvd.staff.Employee;
+import org.solvd.domain.services.Workshop;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

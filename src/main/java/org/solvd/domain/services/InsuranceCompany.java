@@ -1,9 +1,8 @@
-package org.solvd.services;
+package org.solvd.domain.services;
 
-import org.solvd.accident.Accident;
-import org.solvd.staff.Client;
-import org.solvd.staff.Employee;
-import org.solvd.support.Address;
+import org.solvd.domain.staff.Client;
+import org.solvd.domain.staff.Employee;
+import org.solvd.domain.support.Address;
 
 import java.util.List;
 
@@ -58,4 +57,8 @@ public class InsuranceCompany {
         this.employees = employees;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Insurance Company %s %n%s %s %s %s", id, name, address, employees, clients);
+    }
 }

@@ -1,4 +1,4 @@
-package org.solvd.staff;
+package org.solvd.domain.staff;
 
 public enum Positions {
 

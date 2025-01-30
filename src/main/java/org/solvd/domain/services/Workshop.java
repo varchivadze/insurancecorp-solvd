@@ -1,6 +1,6 @@
-package org.solvd.services;
+package org.solvd.domain.services;
 
-import org.solvd.support.Address;
+import org.solvd.domain.support.Address;
 
 public class Workshop {
 

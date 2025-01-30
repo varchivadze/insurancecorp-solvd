@@ -1,4 +1,4 @@
-package org.solvd.staff;
+package org.solvd.domain.staff;
 
 import java.math.BigDecimal;
 
@@ -51,5 +51,12 @@ public class Employee extends Person {
 
     public void setPassportId(String passportId) {
         this.passportId = passportId;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("Employee{id=%d, position='%s', salary=%s, bonus=%s, passportId='%s', %s}",
+                employeeId, position, salary, bonus, passportId, super.toString());
     }
 }

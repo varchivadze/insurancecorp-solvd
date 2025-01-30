@@ -1,9 +1,9 @@
 package org.solvd.service.impl;
 
+import org.solvd.domain.support.Address;
 import org.solvd.persistance.AddressRepository;
 import org.solvd.persistance.impl.AddressRepositoryImp;
 import org.solvd.service.AddressService;
-import org.solvd.support.Address;
 
 import java.sql.SQLException;
 import java.util.List;

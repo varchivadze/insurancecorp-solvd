@@ -1,8 +1,8 @@
 package org.solvd.persistance.impl;
 
+import org.solvd.domain.support.Address;
 import org.solvd.persistance.AddressRepository;
 import org.solvd.persistance.ConnectionPool;
-import org.solvd.support.Address;
 
 import java.sql.*;
 import java.util.ArrayList;

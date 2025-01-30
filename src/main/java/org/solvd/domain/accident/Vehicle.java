@@ -1,7 +1,7 @@
-package org.solvd.accident;
+package org.solvd.domain.accident;
 
-import org.solvd.services.Insurance;
-import org.solvd.staff.Person;
+import org.solvd.domain.services.Insurance;
+import org.solvd.domain.staff.Person;
 
 import java.time.Year;
 import java.util.List;

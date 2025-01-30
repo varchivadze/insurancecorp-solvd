@@ -1,9 +1,9 @@
 package org.solvd.service.impl;
 
+import org.solvd.domain.staff.Person;
 import org.solvd.persistance.PersonRepository;
 import org.solvd.persistance.impl.PersonRepositoryImp;
 import org.solvd.service.PersonService;
-import org.solvd.staff.Person;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,6 +1,10 @@
 package org.solvd.persistance;
 
-import org.solvd.support.Address;
+import org.solvd.domain.support.Address;
 
-public interface AddressRepository extends CrudRepository<Address>{
+import java.sql.SQLException;
+
+public interface AddressRepository extends CrudRepository<Address> {
+
+    void create(Address address) throws SQLException;
 }

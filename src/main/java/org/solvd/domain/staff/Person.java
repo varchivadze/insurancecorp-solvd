@@ -1,6 +1,6 @@
-package org.solvd.staff;
+package org.solvd.domain.staff;
 
-import org.solvd.support.Address;
+import org.solvd.domain.support.Address;
 
 import java.time.LocalDate;
 
