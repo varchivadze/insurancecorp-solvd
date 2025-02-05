@@ -56,7 +56,7 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return String.format("Employee{id=%d, position='%s', salary=%s, bonus=%s, passportId='%s', %s}",
+        return String.format("%nEmployee{id=%d, position='%s', salary=%s, bonus=%s, passportId='%s', %s}",
                 employeeId, position, salary, bonus, passportId, super.toString());
     }
 }

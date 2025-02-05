@@ -92,4 +92,10 @@ public class Vehicle {
     public void setInsurances(List<Insurance> insurances) {
         this.insurances = insurances;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Vehicle{id=%d, owner=%s, made='%s', model='%s', yearProduced=%s, plateNumber='%s', vin='%s', seats=%d, insurances=%s}",
+                id, owner, made, model, yearProduced, plateNumber, vin, seats, insurances);
+    }
 }

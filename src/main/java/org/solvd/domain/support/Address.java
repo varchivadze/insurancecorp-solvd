@@ -1,7 +1,5 @@
 package org.solvd.domain.support;
 
-import java.lang.annotation.Documented;
-
 public class Address {
 
     private Long id;
@@ -11,7 +9,8 @@ public class Address {
     private String street;
     private String unit;
 
-    public Address() {}
+    public Address() {
+    }
 
     public Long getId() {
         return id;
@@ -63,7 +62,9 @@ public class Address {
 
     @Override
     public String toString() {
-        return String.format("Address %s %n%s %s %s %s %s", id, country, city, postalCode, street, unit);
+        return String.format("Address{id=%d, country='%s', city='%s', postalCode='%s', street='%s', unit='%s'}",
+                id, country, city, postalCode, street, unit);
     }
+
 
 }

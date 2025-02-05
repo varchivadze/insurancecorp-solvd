@@ -66,7 +66,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("%nPerson %s %s %s %s %s %nHome Address: %s",
+        return String.format("Person{id=%d, name='%s', surname='%s', dob=%s, telephoneNumber='%s', homeAddress=%s}",
                 id, name, surname, dob, telephoneNumber, homeAddress);
     }
 }

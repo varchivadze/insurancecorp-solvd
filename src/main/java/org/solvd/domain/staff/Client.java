@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 
-public class Client extends Person{
+public class Client extends Person {
 
     private Long clientId;
     private BigDecimal discount;
@@ -41,7 +41,7 @@ public class Client extends Person{
 
     @Override
     public String toString() {
-        return String.format("Client{id=%d, discount='%s', vehicles=%s, %s}",
+        return String.format("%nClient{id=%d, discount='%s', vehicles=%s, %s}",
                 clientId, discount, vehicles, super.toString());
     }
 }

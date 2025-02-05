@@ -72,7 +72,7 @@
             <vehicles>
                 <Vehicle>
                     <id>1</id>
-                    <Persone>
+                    <Person>
                         <id>3</id>
                         <name>Nicolas</name>
                         <surname>Shmicolas</surname>
@@ -86,12 +86,54 @@
                             <street>Marensin</street>
                             <unit>75 av.</unit>
                         </Address>
-                    </Persone>
+                    </Person>
                     <made>VW</made>
                     <model>GOLF</model>
                     <yearProduced>2015</yearProduced>
                     <plateNumber>WZ515AH</plateNumber>
                     <vin>243fssvdgnv45t334t4fg</vin>
+                    <seats>5</seats>
+                    <insurances>
+                        <Insurance>
+                            <id>1</id>
+                            <policeNumber>vsvsd23423423423d</policeNumber>
+                            <insuredFrom>2024-01-02</insuredFrom>
+                            <insuredTill>2025-01-01</insuredTill>
+                            <insuranceCoverage>900000000</insuranceCoverage>
+                            <oc>true</oc>
+                        </Insurance>
+                        <Insurance>
+                            <id>2</id>
+                            <policeNumber>dfvvdvdfvlkdfjvk44523</policeNumber>
+                            <insuredFrom>2024-02-02</insuredFrom>
+                            <insuredTill>2025-02-01</insuredTill>
+                            <insuranceCoverage>900000000</insuranceCoverage>
+                            <oc>false</oc>
+                        </Insurance>
+                    </insurances>
+                </Vehicle>
+                <Vehicle>
+                    <id>2</id>
+                    <Person>
+                        <id>3</id>
+                        <name>Nicolas</name>
+                        <surname>Shmicolas</surname>
+                        <dob>1990-05-15</dob>
+                        <telephoneNumber>+384555555235</telephoneNumber>
+                        <Address>
+                            <id>5</id>
+                            <country>France</country>
+                            <city>Leon</city>
+                            <postalCode>40-550</postalCode>
+                            <street>Marensin</street>
+                            <unit>75 av.</unit>
+                        </Address>
+                    </Person>
+                    <made>VW</made>
+                    <model>Passat</model>
+                    <yearProduced>2015</yearProduced>
+                    <plateNumber>WZ516AH</plateNumber>
+                    <vin>243fssvdgnv45t334t4fh</vin>
                     <seats>5</seats>
                     <insurances>
                         <Insurance>

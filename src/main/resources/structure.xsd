@@ -1,0 +1,147 @@
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="InsuranceCompany">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:long" name="id"/>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element name="Address">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:long" name="id"/>
+                            <xs:element type="xs:string" name="country"/>
+                            <xs:element type="xs:string" name="city"/>
+                            <xs:element type="xs:string" name="postalCode"/>
+                            <xs:element type="xs:string" name="street"/>
+                            <xs:element type="xs:string" name="unit"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="employees">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Employee" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:long" name="id"/>
+                                        <xs:element type="xs:string" name="name"/>
+                                        <xs:element type="xs:string" name="surname"/>
+                                        <xs:element type="xs:date" name="dob"/>
+                                        <xs:element type="xs:string" name="telephoneNumber"/>
+                                        <xs:element name="Address">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:long" name="id"/>
+                                                    <xs:element type="xs:string" name="country"/>
+                                                    <xs:element type="xs:string" name="city"/>
+                                                    <xs:element type="xs:string" name="postalCode"/>
+                                                    <xs:element type="xs:string" name="street"/>
+                                                    <xs:element type="xs:string" name="unit"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element type="xs:long" name="employeeId"/>
+                                        <xs:element type="xs:string" name="position"/>
+                                        <xs:element type="xs:decimal" name="salary"/>
+                                        <xs:element type="xs:decimal" name="bonus"/>
+                                        <xs:element type="xs:string" name="passportId"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="clients">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Client">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:long" name="id"/>
+                                        <xs:element type="xs:string" name="name"/>
+                                        <xs:element type="xs:string" name="surname"/>
+                                        <xs:element type="xs:date" name="dob"/>
+                                        <xs:element type="xs:string" name="telephoneNumber"/>
+                                        <xs:element name="Address">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:long" name="id"/>
+                                                    <xs:element type="xs:string" name="country"/>
+                                                    <xs:element type="xs:string" name="city"/>
+                                                    <xs:element type="xs:string" name="postalCode"/>
+                                                    <xs:element type="xs:string" name="street"/>
+                                                    <xs:element type="xs:string" name="unit"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element type="xs:long" name="clientId"/>
+                                        <xs:element type="xs:decimal" name="discount"/>
+                                        <xs:element name="vehicles">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Vehicle" maxOccurs="unbounded" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element type="xs:long" name="id"/>
+                                                                <xs:element name="Person">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element type="xs:long" name="id"/>
+                                                                            <xs:element type="xs:string" name="name"/>
+                                                                            <xs:element type="xs:string" name="surname"/>
+                                                                            <xs:element type="xs:date" name="dob"/>
+                                                                            <xs:element type="xs:string" name="telephoneNumber"/>
+                                                                            <xs:element name="Address">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element type="xs:long" name="id"/>
+                                                                                        <xs:element type="xs:string" name="country"/>
+                                                                                        <xs:element type="xs:string" name="city"/>
+                                                                                        <xs:element type="xs:string" name="postalCode"/>
+                                                                                        <xs:element type="xs:string" name="street"/>
+                                                                                        <xs:element type="xs:string" name="unit"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element type="xs:string" name="made"/>
+                                                                <xs:element type="xs:string" name="model"/>
+                                                                <xs:element type="xs:gYear" name="yearProduced"/>
+                                                                <xs:element type="xs:string" name="plateNumber"/>
+                                                                <xs:element type="xs:string" name="vin"/>
+                                                                <xs:element type="xs:int" name="seats"/>
+                                                                <xs:element name="insurances">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="Insurance" maxOccurs="unbounded" minOccurs="0">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element type="xs:long" name="id"/>
+                                                                                        <xs:element type="xs:string" name="policeNumber"/>
+                                                                                        <xs:element type="xs:date" name="insuredFrom"/>
+                                                                                        <xs:element type="xs:date" name="insuredTill"/>
+                                                                                        <xs:element type="xs:decimal" name="insuranceCoverage"/>
+                                                                                        <xs:element type="xs:boolean" name="oc"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

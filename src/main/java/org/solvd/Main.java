@@ -80,21 +80,21 @@ public class Main {
 //        InsuranceCompany temp = insuranceCompanyService.retrieveById(1L);
 //        temp.setName(temp.getName() + "temp");
 //        insuranceCompanyService.update(temp);
-        System.out.println(insuranceCompanyService.retrieveById(1L));
-        Client tempClient = clientService.retrieveById(1L);
-        System.out.println(tempClient);
-        tempClient.setDiscount(new BigDecimal("1000"));
-        clientService.update(tempClient);
-
-        Client newClient = new Client();
-        newClient.setName("Client");
-        newClient.setSurname("Client_new");
-        newClient.setDob(LocalDate.parse("2000-02-01"));
-        newClient.setTelephoneNumber("123");
-        newClient.setHomeAddress(addressService.retrieveById(5L));
-        newClient.setDiscount(BigDecimal.ONE);
-        clientService.create(newClient, 1L);
-        System.out.println(clientService.retrieveById(newClient.getClientId()));
+//        System.out.println(insuranceCompanyService.retrieveById(1L));
+//        Client tempClient = clientService.retrieveById(1L);
+//        System.out.println(tempClient);
+//        tempClient.setDiscount(new BigDecimal("1000"));
+//        clientService.update(tempClient);
+//
+//        Client newClient = new Client();
+//        newClient.setName("Client");
+//        newClient.setSurname("Client_new");
+//        newClient.setDob(LocalDate.parse("2000-02-01"));
+//        newClient.setTelephoneNumber("123");
+//        newClient.setHomeAddress(addressService.retrieveById(5L));
+//        newClient.setDiscount(BigDecimal.ONE);
+//        clientService.create(newClient, 1L);
+//        System.out.println(clientService.retrieveById(newClient.getClientId()));
 //        System.out.println(clientService.retrieveAll());
 
     }

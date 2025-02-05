@@ -20,6 +20,7 @@ public class AddressServiceImpl implements AddressService {
     public Address create(Address address) {
         address.setId(null);
         addressRepository.create(address);
+        return address;
     }
 
     @Override

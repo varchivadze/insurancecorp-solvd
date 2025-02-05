@@ -59,6 +59,7 @@ public class InsuranceCompany {
 
     @Override
     public String toString() {
-        return String.format("Insurance Company %s %n%s %s %s %s", id, name, address, employees, clients);
+        return String.format("InsuranceCompany{id=%d, name='%s', address=%s, employees=%s, clients=%s}",
+                id, name, address, employees, clients);
     }
 }

@@ -1,7 +1,5 @@
 package org.solvd.domain.services;
 
-import org.solvd.domain.accident.Vehicle;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -63,5 +61,11 @@ public class Insurance {
 
     public void setOc(Boolean oc) {
         this.oc = oc;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Insurance{id=%d, policeNumber='%s', insuredFrom=%s, insuredTill=%s, coverage=%s, oc=%s}",
+                id, policeNumber, insuredFrom, insuredTill, insuranceCoverage, oc);
     }
 }
