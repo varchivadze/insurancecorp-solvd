@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface InsuranceCompanyRepository extends CrudRepository<InsuranceCompany> {
 
-    InsuranceCompany create(InsuranceCompany insuranceCompany) throws SQLException;
+    InsuranceCompany create(InsuranceCompany insuranceCompany);
 }

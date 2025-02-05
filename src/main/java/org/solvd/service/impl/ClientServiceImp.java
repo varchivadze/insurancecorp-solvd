@@ -19,52 +19,42 @@ public class ClientServiceImp implements ClientService {
     @Override
     public Client create(Client client, Long companyId) {
         client.setId(null);
-        try {
-            clientRepository.create(client, companyId);
-            return client;
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not handle create for client %s", client), e);
-        }
+
+        clientRepository.create(client, companyId);
+        return client;
+
 
     }
 
     @Override
     public Client retrieveById(Long id) {
-        try {
-            return clientRepository.findById(id).orElse(null);
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Database error while retrieving client with id %d", id), e);
-        }
+
+        return clientRepository.findById(id).orElse(null);
+
     }
 
     @Override
     public List<Client> retrieveAll() {
-        try {
-            return clientRepository.findAll();
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not handle findAll for clients", e);
-        }
+
+        return clientRepository.findAll();
+
 
     }
 
     @Override
     public Client update(Client client) {
-        try {
-            clientRepository.update(client);
-            return client;
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not update client %s", client), e);
-        }
+
+        clientRepository.update(client);
+        return client;
+
 
     }
 
     @Override
     public void deleteById(Long id) {
-        try {
-            clientRepository.deleteById(id);
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not delete client by id %d", id), e);
-        }
+
+        clientRepository.deleteById(id);
+
 
     }
 }

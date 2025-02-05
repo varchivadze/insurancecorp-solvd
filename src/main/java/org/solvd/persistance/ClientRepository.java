@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface ClientRepository extends CrudRepository<Client> {
 
-    void create(Client address, Long companyId) throws SQLException;
+    void create(Client address, Long companyId);
 }

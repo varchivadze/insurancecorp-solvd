@@ -7,6 +7,7 @@ import org.solvd.service.PersonService;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class PersonServiceImp implements PersonService {
 
@@ -19,55 +20,38 @@ public class PersonServiceImp implements PersonService {
     @Override
     public Person create(Person person) {
         person.setId(null);
-        try {
-            personRepository.create(person);
-            return person;
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not create new person %s", person), e);
-        }
+
+        personRepository.create(person);
+        return person;
+
     }
 
     @Override
     public Person retrieveById(Long id) {
-        try {
-            return personRepository.findById(id).orElseThrow(() -> new SQLException("Could not handle find person by id " + id.toString()));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return personRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Could not handle find person by id " + id));
     }
 
     @Override
     public List<Person> retrieveAll() {
-        try {
-            return personRepository.findAll();
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not find persons from database");
-        }
+        return personRepository.findAll();
     }
 
     @Override
     public Person update(Person person) {
-        try {
-            Person currentPerson = retrieveById(person.getId());
-            currentPerson.setName(person.getName());
-            currentPerson.setSurname(person.getSurname());
-            currentPerson.setDob(person.getDob());
-            currentPerson.setTelephoneNumber(person.getTelephoneNumber());
-            currentPerson.setHomeAddress(person.getHomeAddress());
-            personRepository.update(currentPerson);
-            return currentPerson;
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not update person %d", person.getId()));
-        }
+        Person currentPerson = retrieveById(person.getId());
+        currentPerson.setName(person.getName());
+        currentPerson.setSurname(person.getSurname());
+        currentPerson.setDob(person.getDob());
+        currentPerson.setTelephoneNumber(person.getTelephoneNumber());
+        currentPerson.setHomeAddress(person.getHomeAddress());
+        personRepository.update(currentPerson);
+        return currentPerson;
+
     }
 
     @Override
     public void deleteById(Long id) {
-        try {
-            personRepository.deleteById(id);
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not delete person by id %d", id));
-        }
+        personRepository.deleteById(id);
     }
 }

@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface PersonRepository extends CrudRepository<Person> {
 
-    Person create(Person address) throws SQLException;
+    Person create(Person address);
 }

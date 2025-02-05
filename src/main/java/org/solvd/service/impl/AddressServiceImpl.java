@@ -19,58 +19,42 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public Address create(Address address) {
         address.setId(null);
-        try {
-            addressRepository.create(address);
-            return address;
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not handle create for address %s", address), e);
-        }
-
+        addressRepository.create(address);
     }
 
     @Override
     public Address retrieveById(Long id) {
-        try {
-            return addressRepository.findById(id).orElse(null);
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Database error while retrieving address with id %d", id), e);
-        }
+
+        return addressRepository.findById(id).orElse(null);
+
     }
 
     @Override
     public List<Address> retrieveAll() {
-        try {
-            return addressRepository.findAll();
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not handle findAll for Addresses", e);
-        }
+
+        return addressRepository.findAll();
+
 
     }
 
     @Override
     public Address update(Address address) {
-        try {
-            Address currentAddress = retrieveById(address.getId());
-            currentAddress.setCountry(address.getCountry());
-            currentAddress.setCity(address.getCity());
-            currentAddress.setPostalCode(address.getPostalCode());
-            currentAddress.setStreet(address.getStreet());
-            currentAddress.setUnit(address.getUnit());
-            addressRepository.update(currentAddress);
-            return currentAddress;
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not update Address %s", address), e);
-        }
+        Address currentAddress = retrieveById(address.getId());
+        currentAddress.setCountry(address.getCountry());
+        currentAddress.setCity(address.getCity());
+        currentAddress.setPostalCode(address.getPostalCode());
+        currentAddress.setStreet(address.getStreet());
+        currentAddress.setUnit(address.getUnit());
+        addressRepository.update(currentAddress);
+        return currentAddress;
 
     }
 
     @Override
     public void deleteById(Long id) {
-        try {
-            addressRepository.deleteById(id);
-        } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not delete Address by id %d", id), e);
-        }
+
+        addressRepository.deleteById(id);
+
 
     }
 }
