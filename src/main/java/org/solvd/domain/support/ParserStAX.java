@@ -201,6 +201,9 @@ public class ParserStAX {
                         case "vehicles":
                             client.setVehicles(parsVehicles(reader));
                             break;
+                        case "discount":
+                            client.setDiscount(new BigDecimal(reader.getElementText()));
+                            break;
                     }
                 }
             }

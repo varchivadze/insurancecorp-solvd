@@ -68,7 +68,7 @@
                 <unit>75 av.</unit>
             </Address>
             <clientId>1</clientId>
-            <discount>0</discount>
+            <discount>100</discount>
             <vehicles>
                 <Vehicle>
                     <id>1</id>
