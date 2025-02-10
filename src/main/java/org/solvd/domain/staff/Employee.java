@@ -1,7 +1,15 @@
 package org.solvd.domain.staff;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Employee extends Person {
 
     private Long employeeId;
@@ -13,6 +21,7 @@ public class Employee extends Person {
     public Employee() {
     }
 
+    @XmlElement
     public Long getEmployeeId() {
         return employeeId;
     }
@@ -21,6 +30,7 @@ public class Employee extends Person {
         this.employeeId = employeeId;
     }
 
+    @XmlElement
     public String getPosition() {
         return position;
     }
@@ -29,6 +39,7 @@ public class Employee extends Person {
         this.position = position;
     }
 
+    @XmlElement
     public BigDecimal getSalary() {
         return salary;
     }
@@ -37,6 +48,7 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+    @XmlElement
     public BigDecimal getBonus() {
         return bonus;
     }
@@ -45,6 +57,7 @@ public class Employee extends Person {
         this.bonus = bonus;
     }
 
+    @XmlElement
     public String getPassportId() {
         return passportId;
     }

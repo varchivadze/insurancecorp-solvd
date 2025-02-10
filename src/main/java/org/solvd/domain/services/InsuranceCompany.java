@@ -1,15 +1,22 @@
 package org.solvd.domain.services;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.solvd.domain.staff.Client;
 import org.solvd.domain.staff.Employee;
 import org.solvd.domain.support.Address;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement(name = "InsuranceCompany")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class InsuranceCompany {
 
     private Long id;
     private String name;
+    @JsonProperty("Address")
     private Address address;
     private List<Employee> employees;
     private List<Client> clients;
@@ -17,14 +24,7 @@ public class InsuranceCompany {
     public InsuranceCompany() {
     }
 
-    public List<Client> getClients() {
-        return clients;
-    }
-
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
-    }
-
+    @XmlElement
     public Long getId() {
         return id;
     }
@@ -33,6 +33,7 @@ public class InsuranceCompany {
         this.id = id;
     }
 
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -41,6 +42,7 @@ public class InsuranceCompany {
         this.name = name;
     }
 
+    @XmlElement(name = "Address")
     public Address getAddress() {
         return address;
     }
@@ -49,12 +51,24 @@ public class InsuranceCompany {
         this.address = address;
     }
 
+    @XmlElementWrapper(name = "employees")
+    @XmlElement(name = "Employee")
     public List<Employee> getEmployees() {
         return employees;
     }
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    @XmlElementWrapper(name = "clients")
+    @XmlElement(name = "Client")
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     @Override

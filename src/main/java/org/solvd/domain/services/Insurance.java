@@ -1,8 +1,20 @@
 package org.solvd.domain.services;
 
+import org.solvd.service.LocalDateAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Insurance {
 
     private Long id;
@@ -15,6 +27,7 @@ public class Insurance {
     public Insurance() {
     }
 
+    @XmlElement
     public Long getId() {
         return id;
     }
@@ -23,6 +36,7 @@ public class Insurance {
         this.id = id;
     }
 
+    @XmlElement
     public String getPoliceNumber() {
         return policeNumber;
     }
@@ -31,6 +45,8 @@ public class Insurance {
         this.policeNumber = policeNumber;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlElement()
     public LocalDate getInsuredFrom() {
         return insuredFrom;
     }
@@ -39,6 +55,8 @@ public class Insurance {
         this.insuredFrom = insuredFrom;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlElement()
     public LocalDate getInsuredTill() {
         return insuredTill;
     }
@@ -47,6 +65,7 @@ public class Insurance {
         this.insuredTill = insuredTill;
     }
 
+    @XmlElement
     public BigDecimal getInsuranceCoverage() {
         return insuranceCoverage;
     }
@@ -55,6 +74,7 @@ public class Insurance {
         this.insuranceCoverage = insuranceCoverage;
     }
 
+    @XmlElement
     public Boolean getOc() {
         return oc;
     }

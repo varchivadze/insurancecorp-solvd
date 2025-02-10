@@ -1,9 +1,18 @@
 package org.solvd.domain.staff;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.solvd.domain.support.Address;
+import org.solvd.service.LocalDateAdapter;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlSeeAlso({Client.class, Employee.class})
 public class Person {
 
     private Long id;
@@ -11,11 +20,13 @@ public class Person {
     private String surname;
     private LocalDate dob;
     private String telephoneNumber;
+    @JsonProperty("Address")
     private Address homeAddress;
 
     public Person() {
     }
 
+    @XmlElement
     public Long getId() {
         return id;
     }
@@ -24,6 +35,7 @@ public class Person {
         this.id = id;
     }
 
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -32,6 +44,7 @@ public class Person {
         this.name = name;
     }
 
+    @XmlElement
     public String getSurname() {
         return surname;
     }
@@ -40,6 +53,8 @@ public class Person {
         this.surname = surname;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlElement()
     public LocalDate getDob() {
         return dob;
     }
@@ -48,6 +63,7 @@ public class Person {
         this.dob = dob;
     }
 
+    @XmlElement
     public String getTelephoneNumber() {
         return telephoneNumber;
     }
@@ -56,6 +72,7 @@ public class Person {
         this.telephoneNumber = telephoneNumber;
     }
 
+    @XmlElement(name = "Address")
     public Address getHomeAddress() {
         return homeAddress;
     }

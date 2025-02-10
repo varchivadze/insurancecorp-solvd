@@ -1,4 +1,4 @@
-package org.solvd.domain.support;
+package org.solvd.service;
 
 import org.solvd.domain.accident.Vehicle;
 import org.solvd.domain.services.Insurance;
@@ -6,6 +6,7 @@ import org.solvd.domain.services.InsuranceCompany;
 import org.solvd.domain.staff.Client;
 import org.solvd.domain.staff.Employee;
 import org.solvd.domain.staff.Person;
+import org.solvd.domain.support.Address;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;

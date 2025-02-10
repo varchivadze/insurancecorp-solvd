@@ -1,5 +1,9 @@
 package org.solvd.domain.support;
 
+import javax.xml.bind.annotation.XmlElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
 
     private Long id;
@@ -12,6 +16,7 @@ public class Address {
     public Address() {
     }
 
+    @XmlElement
     public Long getId() {
         return id;
     }
@@ -20,6 +25,7 @@ public class Address {
         this.id = id;
     }
 
+    @XmlElement
     public String getCountry() {
         return country;
     }
@@ -28,6 +34,7 @@ public class Address {
         this.country = country;
     }
 
+    @XmlElement
     public String getCity() {
         return city;
     }
@@ -36,6 +43,7 @@ public class Address {
         this.city = city;
     }
 
+    @XmlElement
     public String getPostalCode() {
         return postalCode;
     }
@@ -44,6 +52,7 @@ public class Address {
         this.postalCode = postalCode;
     }
 
+    @XmlElement
     public String getStreet() {
         return street;
     }
@@ -52,6 +61,7 @@ public class Address {
         this.street = street;
     }
 
+    @XmlElement
     public String getUnit() {
         return unit;
     }

@@ -2,10 +2,14 @@ package org.solvd.domain.staff;
 
 import org.solvd.domain.accident.Vehicle;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Client extends Person {
 
     private Long clientId;
@@ -15,6 +19,7 @@ public class Client extends Person {
     public Client() {
     }
 
+    @XmlElement
     public Long getClientId() {
         return clientId;
     }
@@ -23,6 +28,7 @@ public class Client extends Person {
         this.clientId = clientId;
     }
 
+    @XmlElement
     public BigDecimal getDiscount() {
         return discount;
     }
@@ -31,6 +37,8 @@ public class Client extends Person {
         this.discount = discount;
     }
 
+    @XmlElementWrapper(name = "vehicles")
+    @XmlElement(name = "Vehicle")
     public List<Vehicle> getVehicles() {
         return vehicles;
     }

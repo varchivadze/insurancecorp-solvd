@@ -1,14 +1,24 @@
 package org.solvd.domain.accident;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.solvd.domain.services.Insurance;
 import org.solvd.domain.staff.Person;
+import org.solvd.service.YearAdapter;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.Year;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Vehicle {
 
     private Long id;
+
+    @JsonProperty("Person")
     private Person owner;
     private String made;
     private String model;
@@ -21,6 +31,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
+    @XmlElement
     public Long getId() {
         return id;
     }
@@ -29,6 +40,7 @@ public class Vehicle {
         this.id = id;
     }
 
+    @XmlElement(name = "Person")
     public Person getOwner() {
         return owner;
     }
@@ -37,6 +49,7 @@ public class Vehicle {
         this.owner = owner;
     }
 
+    @XmlElement
     public String getMade() {
         return made;
     }
@@ -45,6 +58,7 @@ public class Vehicle {
         this.made = made;
     }
 
+    @XmlElement
     public String getModel() {
         return model;
     }
@@ -53,6 +67,8 @@ public class Vehicle {
         this.model = model;
     }
 
+    @XmlElement
+    @XmlJavaTypeAdapter(YearAdapter.class)
     public Year getYearProduced() {
         return yearProduced;
     }
@@ -61,6 +77,7 @@ public class Vehicle {
         this.yearProduced = yearProduced;
     }
 
+    @XmlElement
     public String getPlateNumber() {
         return plateNumber;
     }
@@ -69,6 +86,7 @@ public class Vehicle {
         this.plateNumber = plateNumber;
     }
 
+    @XmlElement
     public String getVin() {
         return vin;
     }
@@ -77,6 +95,7 @@ public class Vehicle {
         this.vin = vin;
     }
 
+    @XmlElement
     public Integer getSeats() {
         return seats;
     }
@@ -85,6 +104,8 @@ public class Vehicle {
         this.seats = seats;
     }
 
+    @XmlElementWrapper(name = "insurances")
+    @XmlElement(name = "Insurance")
     public List<Insurance> getInsurances() {
         return insurances;
     }

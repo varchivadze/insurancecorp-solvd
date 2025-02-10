@@ -1,0 +1,160 @@
+{
+  "id": "1",
+  "name": "PZU",
+  "Address": {
+    "id": "1",
+    "country": "Poland",
+    "city": "Warsaw",
+    "postalCode": "05-000",
+    "street": "Okopowa",
+    "unit": "5"
+  },
+  "employees": [
+    {
+      "id": "1",
+      "name": "John",
+      "surname": "Smith",
+      "dob": "2000-05-15",
+      "telephoneNumber": "+384554999234",
+      "Address": {
+        "id": "2",
+        "country": "Germany",
+        "city": "Baden Baden",
+        "postalCode": "39-000",
+        "street": "Mannheimer",
+        "unit": "46"
+      },
+      "employeeId": "1",
+      "position": "Manager",
+      "salary": "5000",
+      "bonus": "0",
+      "passportId": "KK445566"
+    },
+    {
+      "id": "2",
+      "name": "Natalia",
+      "surname": "Smith",
+      "dob": "1999-05-15",
+      "telephoneNumber": "+384554999235",
+      "Address": {
+        "id": "3",
+        "country": "Germany",
+        "city": "Baden Baden",
+        "postalCode": "39-000",
+        "street": "Mannheimer",
+        "unit": "46"
+      },
+      "employeeId": "2",
+      "position": "Project Manager",
+      "salary": "7000",
+      "bonus": "2000",
+      "passportId": "Ky445556"
+    }
+  ],
+  "clients":[
+    {
+      "id": "3",
+      "name": "Nicolas",
+      "surname": "Shmicolas",
+      "dob": "1990-05-15",
+      "telephoneNumber": "+384555555235",
+      "Address": {
+        "id": "5",
+        "country": "France",
+        "city": "Leon",
+        "postalCode": "40-550",
+        "street": "Marensin",
+        "unit": "75 av."
+      },
+      "clientId": "1",
+      "discount": "100",
+      "vehicles": [
+        {
+          "id": "1",
+          "Person": {
+            "id": "3",
+            "name": "Nicolas",
+            "surname": "Shmicolas",
+            "dob": "1990-05-15",
+            "telephoneNumber": "+384555555235",
+            "Address": {
+              "id": "5",
+              "country": "France",
+              "city": "Leon",
+              "postalCode": "40-550",
+              "street": "Marensin",
+              "unit": "75 av."
+            }
+          },
+          "made": "VW",
+          "model": "GOLF",
+          "yearProduced": "2015",
+          "plateNumber": "WZ515AH",
+          "vin": "243fssvdgnv45t334t4fg",
+          "seats": "5",
+          "insurances": [
+            {
+              "id": "1",
+              "policeNumber": "vsvsd23423423423d",
+              "insuredFrom": "2024-01-02",
+              "insuredTill": "2025-01-01",
+              "insuranceCoverage": "900000000",
+              "oc": "true"
+            },
+            {
+              "id": "2",
+              "policeNumber": "dfvvdvdfvlkdfjvk44523",
+              "insuredFrom": "2024-02-02",
+              "insuredTill": "2025-02-01",
+              "insuranceCoverage": "900000000",
+              "oc": "false"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "Person": {
+            "id": "3",
+            "name": "Nicolas",
+            "surname": "Shmicolas",
+            "dob": "1990-05-15",
+            "telephoneNumber": "+384555555235",
+            "Address": {
+              "id": "5",
+              "country": "France",
+              "city": "Leon",
+              "postalCode": "40-550",
+              "street": "Marensin",
+              "unit": "75 av."
+            }
+          },
+          "made": "VW",
+          "model": "Passat",
+          "yearProduced": "2015",
+          "plateNumber": "WZ516AH",
+          "vin": "243fssvdgnv45t334t4fh",
+          "seats": "5",
+          "insurances": [
+            {
+              "id": "1",
+              "policeNumber": "vsvsd23423423423d",
+              "insuredFrom": "2024-01-02",
+              "insuredTill": "2025-01-01",
+              "insuranceCoverage": "900000000",
+              "oc": "true"
+            },
+            {
+              "id": "2",
+              "policeNumber": "dfvvdvdfvlkdfjvk44523",
+              "insuredFrom": "2024-02-02",
+              "insuredTill": "2025-02-01",
+              "insuranceCoverage": "900000000",
+              "oc": "false"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+}
