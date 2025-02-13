@@ -2,6 +2,7 @@ package org.solvd.service.impl;
 
 import org.solvd.domain.support.Address;
 import org.solvd.persistance.AddressRepository;
+import org.solvd.persistance.impl.AddressMapperImp;
 import org.solvd.persistance.impl.AddressRepositoryImp;
 import org.solvd.service.AddressService;
 
@@ -12,9 +13,12 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
 
+
     public AddressServiceImpl() {
-        this.addressRepository = new AddressRepositoryImp();
+//        this.addressRepository = new AddressRepositoryImp();
+        this.addressRepository = new AddressMapperImp();
     }
+
 
     @Override
     public Address create(Address address) {

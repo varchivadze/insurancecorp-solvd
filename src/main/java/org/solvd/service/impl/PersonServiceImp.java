@@ -2,6 +2,7 @@ package org.solvd.service.impl;
 
 import org.solvd.domain.staff.Person;
 import org.solvd.persistance.PersonRepository;
+import org.solvd.persistance.impl.PersonMapperImp;
 import org.solvd.persistance.impl.PersonRepositoryImp;
 import org.solvd.service.PersonService;
 
@@ -14,7 +15,8 @@ public class PersonServiceImp implements PersonService {
     private final PersonRepository personRepository;
 
     public PersonServiceImp() {
-        this.personRepository = new PersonRepositoryImp();
+//        this.personRepository = new PersonRepositoryImp();
+        this.personRepository = new PersonMapperImp();
     }
 
     @Override

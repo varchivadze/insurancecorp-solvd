@@ -1,6 +1,8 @@
 package org.solvd;
 
 import org.solvd.domain.staff.Client;
+import org.solvd.domain.staff.Person;
+import org.solvd.domain.support.Address;
 import org.solvd.service.*;
 import org.solvd.service.impl.*;
 
@@ -96,6 +98,55 @@ public class Main {
 //        clientService.create(newClient, 1L);
 //        System.out.println(clientService.retrieveById(newClient.getClientId()));
 //        System.out.println(clientService.retrieveAll());
+        Address address = new Address();
+        address.setCountry("Country");
+        address.setCity("city");
+        address.setPostalCode("11-111");
+        address.setStreet("street");
+        address.setUnit("57");
+        addressService.create(address);
+        address.setUnit("57");
+        addressService.update(address);
+        System.out.println(addressService.retrieveAll());
+        System.out.println(address.getId());
+
+
+        Person person = new Person();
+        person.setHomeAddress(address);
+        person.setDob(LocalDate.parse("2000-01-01"));
+        person.setName("new name");
+        person.setSurname("New surname");
+        person.setTelephoneNumber("111222333");
+        person = personeService.create(person);
+        System.out.println(personeService.retrieveById(person.getId()));
+        System.out.println(personeService.retrieveAll());
+        person.setSurname("123 Surname");
+        personeService.update(person);
+
+        System.out.println(person.getId());
+        System.out.println("Retrieve person");
+        System.out.println(personeService.retrieveById(person.getId()));
+
+
+
+        Client client = new Client();
+        client.setDob(person.getDob());
+        client.setId(person.getId());
+        client.setName(person.getName());
+        client.setSurname(person.getSurname());
+        client.setTelephoneNumber(person.getTelephoneNumber());
+        client.setHomeAddress(person.getHomeAddress());
+        client.setDiscount(BigDecimal.ZERO);
+        System.out.println(client.getId());
+
+        clientService.create(client, 1L);
+        System.out.println(clientService.retrieveById(client.getClientId()));
+
+        personeService.deleteById(person.getId());
+        addressService.deleteById(address.getId());
+
+
+
 
     }
 }

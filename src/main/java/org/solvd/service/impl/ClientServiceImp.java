@@ -2,10 +2,9 @@ package org.solvd.service.impl;
 
 import org.solvd.domain.staff.Client;
 import org.solvd.persistance.ClientRepository;
-import org.solvd.persistance.impl.ClientRepositoryImp;
+import org.solvd.persistance.impl.ClientMapperImp;
 import org.solvd.service.ClientService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ClientServiceImp implements ClientService {
@@ -13,8 +12,10 @@ public class ClientServiceImp implements ClientService {
     private final ClientRepository clientRepository;
 
     public ClientServiceImp() {
-        this.clientRepository = new ClientRepositoryImp();
+//        this.clientRepository = new ClientRepositoryImp();
+        this.clientRepository = new ClientMapperImp();
     }
+
 
     @Override
     public Client create(Client client, Long companyId) {

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.solvd.persistance.PersonRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into persons (name, surname, dob, telephone_number, address_id)
+        values (#{name}, #{surname}, #{dob}, #{telephoneNumber}, #{homeAddress.id});
+    </insert>
+
+    <sql id="findBody">
+        p.id as person_id,
+        p.name as person_name,
+        p.surname as person_surname,
+        p.dob as person_dob,
+        p.telephone_number as person_telephone_number,
+        p.address_id as person_address_id,
+        <include refid="org.solvd.persistance.AddressRepository.findBody"/>
+    </sql>
+
+    <sql id="findJoins">
+        persons p
+        Left Join addresses a On p.address_id = a.id
+    </sql>
+
+    <sql id="find">
+        Select
+        <include refid="findBody" />
+        From
+        <include refid="findJoins" />
+    </sql>
+
+    <select id="findById" resultMap="PersonResultMap">
+        <include refid="find"/>
+        Where p.id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="PersonResultMap">
+        <include refid="find"/>
+    </select>
+
+    <update id="update">
+        Update persons set name = #{name}, surname = #{surname}, dob = #{dob} , telephone_number  = #{telephoneNumber}, address_id  = #{homeAddress.id}
+        Where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        Delete from persons where id = #{id}
+    </delete>
+
+    <resultMap id="PersonResultMap" type="org.solvd.domain.staff.Person" autoMapping="false">
+        <id property="id" column="person_id"/>
+        <result property="name" column="person_name"/>
+        <result property="surname" column="person_surname"/>
+        <result property="dob" column="person_dob"/>
+        <result property="telephoneNumber" column="person_telephone_number"/>
+        <association  property="homeAddress" column="address_id" javaType="org.solvd.domain.support.Address"
+                      resultMap="org.solvd.persistance.AddressRepository.AddressResultMap"/>
+    </resultMap>
+</mapper>

@@ -14,7 +14,7 @@ public class PersonRepositoryImp implements PersonRepository {
 
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
-    public Person create(Person person) {
+    public void create(Person person) {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "insert into persons (name, surname, dob, telephone_number, address_id) values (?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)) {
@@ -30,7 +30,6 @@ public class PersonRepositoryImp implements PersonRepository {
             while (resultSet.next()) {
                 person.setId(resultSet.getLong(1));
             }
-            return person;
         } catch (SQLException e) {
             throw new RuntimeException("Unable to create person.", e);
         } finally {

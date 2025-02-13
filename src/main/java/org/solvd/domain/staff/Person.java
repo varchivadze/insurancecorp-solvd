@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlSeeAlso({Client.class, Employee.class})
 public class Person {

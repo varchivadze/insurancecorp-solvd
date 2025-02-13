@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.solvd.persistance.ClientRepository">
+    <insert id="create" keyColumn="id" keyProperty="clientId" useGeneratedKeys="true">
+        insert into clients (person_id, discount, insurance_company_id)
+        values (#{client.id}, #{client.discount}, #{insurance_company_id});
+    </insert>
+
+    <sql id="findBody">
+        c.clientId as client_id,
+        c.discount as client_discount,
+        <include refid="org.solvd.persistance.PersonRepository.findBody"/>
+    </sql>
+
+    <sql id="findJoins">
+        clients c
+        Left Join persons p On c.person_id = p.id
+        Left Join addresses a On p.address_id = a.id
+    </sql>
+
+    <sql id="find">
+        Select
+        <include refid="findBody" />
+        From
+        <include refid="findJoins" />
+    </sql>
+
+    <select id="findById" resultMap="ClientResultMap">
+        <include refid="find"/>
+        Where c.id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="ClientResultMap">
+        <include refid="find"/>
+    </select>
+
+    <update id="update">
+        Update client set person_id = #{id}, discount = #{discount}, insurance_company_id = #{insuranceCompanyId}
+        Where id = #{clientId}
+    </update>
+
+    <delete id="deleteById">
+        Delete from clients where id = #{id}
+    </delete>
+
+    <resultMap id="ClientResultMap" type="org.solvd.domain.staff.Client" autoMapping="false">
+        <id property="clientId" column="client_id"/>
+        <result property="discount" column="client_discount"/>
+        <association  property="homeAddress" column="person_address_id" javaType="org.solvd.domain.support.Address"
+                      resultMap="org.solvd.persistance.AddressRepository.AddressResultMap"/>
+    </resultMap>
+</mapper>

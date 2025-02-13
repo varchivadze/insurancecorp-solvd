@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.solvd.persistance.AddressRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        Insert into addresses (country, city, postal_code, street, unit) values (#{country}, #{city}, #{postalCode}, #{street}, #{unit});
+    </insert>
+
+    <sql id="findBody">
+        a.id as address_id,
+        a.country as address_country,
+        a.city as address_city,
+        a.postal_code as address_postal_code,
+        a.street as address_street,
+        a.unit as address_unit
+    </sql>
+
+    <sql id="findJoins">
+        addresses a
+    </sql>
+
+    <sql id="find">
+        Select
+        <include refid="findBody" />
+        From
+        <include refid="findJoins" />
+    </sql>
+
+    <select id="findById" resultMap="AddressResultMap">
+        <include refid="find"/>
+        Where id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="AddressResultMap">
+        <include refid="find"/>
+    </select>
+
+    <update id="update">
+        Update addresses set country = #{country}, city = #{city}, postal_code = #{postalCode} , street = #{street}, unit = #{unit} Where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        Delete from addresses where id = #{id}
+    </delete>
+
+    <resultMap id="AddressResultMap" type="org.solvd.domain.support.Address" autoMapping="false">
+        <id property="id" column="address_id"/>
+        <result property="country" column="address_country"/>
+        <result property="city" column="address_city"/>
+        <result property="postalCode" column="address_postal_code"/>
+        <result property="street" column="address_street"/>
+        <result property="unit" column="address_unit"/>
+    </resultMap>
+</mapper>
