@@ -1,11 +1,15 @@
 package org.solvd.domain.services;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.solvd.domain.accident.Accident;
+import org.solvd.domain.accident.AccidentListener;
 import org.solvd.domain.staff.Client;
 import org.solvd.domain.staff.Employee;
 import org.solvd.domain.support.Address;
 
 import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,8 +24,22 @@ public class InsuranceCompany {
     private Address address;
     private List<Employee> employees;
     private List<Client> clients;
+    private List<Accident> accidents = new ArrayList<>();
 
     public InsuranceCompany() {
+    }
+
+    public List<Accident> getAccidents() {
+        return accidents;
+    }
+
+    public void setAccidents(List<Accident> accidents) {
+        this.accidents = accidents;
+    }
+
+    public void addAccident(Accident accident) {
+        accidents.add(accident);
+        Listeners.onNewAccident(accident);
     }
 
     @XmlElement

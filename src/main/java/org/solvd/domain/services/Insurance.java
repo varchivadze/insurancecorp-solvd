@@ -1,7 +1,9 @@
 package org.solvd.domain.services;
 
+import org.solvd.domain.staff.Employee;
 import org.solvd.service.LocalDateAdapter;
 
+import javax.swing.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -80,6 +82,50 @@ public class Insurance {
 
     public void setOc(Boolean oc) {
         this.oc = oc;
+    }
+
+
+    public static Builder builder() {
+        return new Insurance.Builder(new Insurance());
+    }
+
+    public static class Builder {
+
+        private final Insurance insurance;
+
+        public Builder(Insurance insurance) {
+            this.insurance = insurance;
+        }
+
+        public Builder policeNumber(String policeNumber) {
+            this.insurance.policeNumber = policeNumber;
+            return this;
+        }
+
+        public Builder insuredFrom(LocalDate insuredFrom) {
+            this.insurance.insuredFrom = insuredFrom;
+            return this;
+        }
+
+        public Builder insuredTill(LocalDate insuredTill) {
+            this.insurance.insuredTill = insuredTill;
+            return this;
+        }
+
+        public Builder insuranceCoverage(BigDecimal insuranceCoverage) {
+            this.insurance.insuranceCoverage = insuranceCoverage;
+            return this;
+        }
+
+        public Builder oc(Boolean oc) {
+            this.insurance.oc = oc;
+            return this;
+        }
+
+        public Insurance build() {
+            return this.insurance;
+        }
+
     }
 
     @Override

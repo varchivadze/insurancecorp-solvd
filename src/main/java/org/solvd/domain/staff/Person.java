@@ -1,18 +1,21 @@
 package org.solvd.domain.staff;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.solvd.domain.support.Address;
 import org.solvd.service.LocalDateAdapter;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlSeeAlso({Client.class, Employee.class})
-public class Person {
+public class Person implements CallablePerson {
 
     private Long personId;
     private String name;
@@ -78,6 +81,11 @@ public class Person {
 
     public void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;
+    }
+
+    @Override
+    public void call() {
+        System.out.println("Calling person" + getName() + " " + getSurname());
     }
 
     @Override

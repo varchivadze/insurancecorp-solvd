@@ -92,4 +92,10 @@ public class Accident {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Vehicle{id=%d, date=%s, placeOfAccident='%s'}",
+                id, date, placeOfAccident);
+    }
 }

@@ -1,7 +1,8 @@
 package org.solvd.domain.support;
 
-import javax.xml.bind.annotation.XmlElement;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.xml.bind.annotation.XmlElement;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
