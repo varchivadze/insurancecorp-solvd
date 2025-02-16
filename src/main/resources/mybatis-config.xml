@@ -14,8 +14,8 @@
         </environment>
     </environments>
     <mappers>
-<!--        <mapper resource="InsuranceCompanyMapper.xml"/>-->
-<!--        <mapper resource="EmployeeMapper.xml"/>-->
+        <mapper resource="mapper/InsuranceCompanyMapper.xml"/>
+        <mapper resource="mapper/EmployeeMapper.xml"/>
         <mapper resource="mapper/PersonMapper.xml"/>
         <mapper resource="mapper/ClientMapper.xml"/>
         <mapper resource="mapper/AddressMapper.xml"/>

@@ -2,15 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.solvd.persistance.ClientRepository">
-    <insert id="create" keyColumn="id" keyProperty="clientId" useGeneratedKeys="true">
+    <insert id="create" keyColumn="id" keyProperty="client.clientId" useGeneratedKeys="true">
         insert into clients (person_id, discount, insurance_company_id)
-        values (#{client.id}, #{client.discount}, #{insurance_company_id});
+        values (#{client.personId}, #{client.discount}, #{companyId});
     </insert>
 
     <sql id="findBody">
-        c.clientId as client_id,
+        c.id as client_id,
         c.discount as client_discount,
-        <include refid="org.solvd.persistance.PersonRepository.findBody"/>
+        p.id as person_id,
+        p.name as person_name,
+        p.surname as person_surname,
+        p.dob as person_dob,
+        p.telephone_number as person_telephone_number,
+        p.address_id as person_address_id,
+        <include refid="org.solvd.persistance.AddressRepository.findBody"/>
     </sql>
 
     <sql id="findJoins">
@@ -28,7 +34,7 @@
 
     <select id="findById" resultMap="ClientResultMap">
         <include refid="find"/>
-        Where c.id = #{id}
+        Where c.id = #{clientId}
     </select>
 
     <select id="findAll" resultMap="ClientResultMap">
@@ -36,18 +42,23 @@
     </select>
 
     <update id="update">
-        Update client set person_id = #{id}, discount = #{discount}, insurance_company_id = #{insuranceCompanyId}
+        Update clients set person_id = #{personId}, discount = #{discount}
         Where id = #{clientId}
     </update>
 
     <delete id="deleteById">
-        Delete from clients where id = #{id}
+        Delete from clients where id = #{clientId}
     </delete>
 
     <resultMap id="ClientResultMap" type="org.solvd.domain.staff.Client" autoMapping="false">
         <id property="clientId" column="client_id"/>
         <result property="discount" column="client_discount"/>
-        <association  property="homeAddress" column="person_address_id" javaType="org.solvd.domain.support.Address"
-                      resultMap="org.solvd.persistance.AddressRepository.AddressResultMap"/>
+        <result property="personId" column="person_id"/>
+        <result property="name" column="person_name"/>
+        <result property="surname" column="person_surname"/>
+        <result property="dob" column="person_dob"/>
+        <result property="telephoneNumber" column="person_telephone_number"/>
+        <association property="homeAddress" column="person_address_id" javaType="org.solvd.domain.support.Address"
+                     resultMap="org.solvd.persistance.AddressRepository.AddressResultMap"/>
     </resultMap>
 </mapper>

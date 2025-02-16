@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.solvd.persistance.EmployeeRepository">
+    <insert id="create" keyColumn="id" keyProperty="employee.employeeId" useGeneratedKeys="true">
+        insert into employees (position, salary, bonus, passport_id, person_id,insurance_company_id)
+        values (#{employee.position}, #{employee.salary}, #{employee.bonus},
+        #{employee.passportId},#{employee.personId},#{companyId});
+    </insert>
+
+    <sql id="findBody">
+        e.id as employee_id,
+        e.position as employee_position,
+        e.salary as employee_salary,
+        e.bonus as employee_bonus,
+        e.passport_id as employee_passportId,
+        p.id as person_id,
+        p.name as person_name,
+        p.surname as person_surname,
+        p.dob as person_dob,
+        p.telephone_number as person_telephone_number,
+        p.address_id as person_address_id,
+        <include refid="org.solvd.persistance.AddressRepository.findBody"/>
+    </sql>
+
+    <sql id="findJoins">
+        employees e
+        Left Join persons p On e.person_id = p.id
+        Left Join addresses a On p.address_id = a.id
+    </sql>
+
+    <sql id="find">
+        Select
+        <include refid="findBody" />
+        From
+        <include refid="findJoins" />
+    </sql>
+
+    <select id="findById" resultMap="EmployeeResultMap">
+        <include refid="find"/>
+        Where e.id = #{employeeId}
+    </select>
+
+    <select id="findAll" resultMap="EmployeeResultMap">
+        <include refid="find"/>
+    </select>
+
+    <update id="update">
+        Update employee set person_id = #{personId}, position = #{position},
+        salary = #{salary}, bonus = #{bonus}, passport_id = #{passportId},
+        Where id = #{employeeId}
+    </update>
+
+    <delete id="deleteById">
+        Delete from clients where id = #{employeeId}
+    </delete>
+
+    <resultMap id="EmployeeResultMap" type="org.solvd.domain.staff.Employee" autoMapping="false">
+        <id property="employeeId" column="employee_id"/>
+        <result property="position" column="employee_position"/>
+        <result property="salary" column="employee_salary"/>
+        <result property="bonus" column="employee_bonus"/>
+        <result property="passportId" column="employee_passport_id"/>
+
+        <result property="personId" column="person_id"/>
+        <result property="name" column="person_name"/>
+        <result property="surname" column="person_surname"/>
+        <result property="dob" column="person_dob"/>
+        <result property="telephoneNumber" column="person_telephone_number"/>
+        <association property="homeAddress" column="person_address_id" javaType="org.solvd.domain.support.Address"
+                     resultMap="org.solvd.persistance.AddressRepository.AddressResultMap"/>
+    </resultMap>
+</mapper>

@@ -17,7 +17,7 @@ public class EmployeeRepositoryImp implements EmployeeRepository {
 
     public void create(Employee employee, Long companyId) {
         Connection connection = CONNECTION_POOL.getConnection();
-        if (employee.getId() == null) {
+        if (employee.getPersonId() == null) {
             PERSON_REPOSITORY_IMP.create(employee);
         } else {
             PERSON_REPOSITORY_IMP.update(employee);
@@ -28,7 +28,7 @@ public class EmployeeRepositoryImp implements EmployeeRepository {
             preparedStatement.setBigDecimal(2, employee.getSalary());
             preparedStatement.setBigDecimal(3, employee.getBonus());
             preparedStatement.setString(4, employee.getPassportId());
-            preparedStatement.setLong(5, employee.getId());
+            preparedStatement.setLong(5, employee.getPersonId());
             preparedStatement.setLong(6, companyId);
 
             preparedStatement.executeUpdate();
@@ -106,7 +106,7 @@ public class EmployeeRepositoryImp implements EmployeeRepository {
             preparedStatement.setBigDecimal(2, employee.getSalary());
             preparedStatement.setBigDecimal(3, employee.getBonus());
             preparedStatement.setString(4, employee.getPassportId());
-            preparedStatement.setLong(5, employee.getId());
+            preparedStatement.setLong(5, employee.getPersonId());
             preparedStatement.setLong(6, employee.getEmployeeId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -155,7 +155,7 @@ public class EmployeeRepositoryImp implements EmployeeRepository {
         employee.setBonus(resultSet.getBigDecimal("bonus"));
         employee.setPassportId(resultSet.getString("passport_id"));
 
-        employee.setId(resultSet.getLong("person_id"));
+        employee.setPersonId(resultSet.getLong("person_id"));
         employee.setName(resultSet.getString("name"));
         employee.setSurname(resultSet.getString("surname"));
         employee.setDob(resultSet.getDate("dob").toLocalDate());

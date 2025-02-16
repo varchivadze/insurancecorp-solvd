@@ -14,7 +14,7 @@ public class InsuranceCompanyRepositoryImpl implements InsuranceCompanyRepositor
 
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
-    public InsuranceCompany create(InsuranceCompany insuranceCompany) {
+    public void create(InsuranceCompany insuranceCompany) {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "insert into insurance_companies (name, address_id) values (?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)) {
@@ -27,7 +27,6 @@ public class InsuranceCompanyRepositoryImpl implements InsuranceCompanyRepositor
             while (resultSet.next()) {
                 insuranceCompany.setId(resultSet.getLong(1));
             }
-            return insuranceCompany;
         } catch (SQLException e) {
             throw new RuntimeException("Unable to create insurance company.", e);
         } finally {

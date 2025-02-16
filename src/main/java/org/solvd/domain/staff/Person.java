@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @XmlSeeAlso({Client.class, Employee.class})
 public class Person {
 
-    private Long id;
+    private Long personId;
     private String name;
     private String surname;
     private LocalDate dob;
@@ -26,12 +26,12 @@ public class Person {
     }
 
     @XmlElement
-    public Long getId() {
-        return id;
+    public Long getPersonId() {
+        return personId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 
     @XmlElement
@@ -83,6 +83,6 @@ public class Person {
     @Override
     public String toString() {
         return String.format("Person{id=%d, name='%s', surname='%s', dob=%s, telephoneNumber='%s', homeAddress=%s}",
-                id, name, surname, dob, telephoneNumber, homeAddress);
+                personId, name, surname, dob, telephoneNumber, homeAddress);
     }
 }

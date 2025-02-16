@@ -81,7 +81,7 @@ public class ParserStAX {
                 } else if (employee != null) {
                     switch (elementName) {
                         case "id":
-                            employee.setId(Long.parseLong(reader.getElementText()));
+                            employee.setPersonId(Long.parseLong(reader.getElementText()));
                             break;
                         case "employeeId":
                             employee.setEmployeeId(Long.parseLong(reader.getElementText()));
@@ -179,7 +179,7 @@ public class ParserStAX {
                 } else if (client != null) {
                     switch (elementName) {
                         case "id":
-                            client.setId(Long.parseLong(reader.getElementText()));
+                            client.setPersonId(Long.parseLong(reader.getElementText()));
                             break;
                         case "clientId":
                             client.setClientId(Long.parseLong(reader.getElementText()));
@@ -319,7 +319,7 @@ public class ParserStAX {
                 String elementName = event.asStartElement().getName().getLocalPart();
                 switch (elementName) {
                     case "id":
-                        person.setId(Long.parseLong(reader.getElementText()));
+                        person.setPersonId(Long.parseLong(reader.getElementText()));
                         break;
                     case "name":
                         person.setName(reader.getElementText());

@@ -19,7 +19,7 @@ public class ClientServiceImp implements ClientService {
 
     @Override
     public Client create(Client client, Long companyId) {
-        client.setId(null);
+        client.setClientId(null);
 
         clientRepository.create(client, companyId);
         return client;

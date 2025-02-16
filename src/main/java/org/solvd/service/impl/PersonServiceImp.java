@@ -21,7 +21,7 @@ public class PersonServiceImp implements PersonService {
 
     @Override
     public Person create(Person person) {
-        person.setId(null);
+        person.setPersonId(null);
 
         personRepository.create(person);
         return person;
@@ -41,7 +41,7 @@ public class PersonServiceImp implements PersonService {
 
     @Override
     public Person update(Person person) {
-        Person currentPerson = retrieveById(person.getId());
+        Person currentPerson = retrieveById(person.getPersonId());
         currentPerson.setName(person.getName());
         currentPerson.setSurname(person.getSurname());
         currentPerson.setDob(person.getDob());

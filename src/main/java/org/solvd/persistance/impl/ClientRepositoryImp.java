@@ -17,14 +17,14 @@ public class ClientRepositoryImp implements ClientRepository {
 
     public void create(Client client, Long companyId) {
         Connection connection = CONNECTION_POOL.getConnection();
-        if (client.getId() == null) {
+        if (client.getPersonId() == null) {
             PERSON_REPOSITORY_IMP.create(client);
         } else {
             PERSON_REPOSITORY_IMP.update(client);
         }
         String statement = "insert into clients (person_id, discount, insurance_company_id) values (?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, client.getId());
+            preparedStatement.setLong(1, client.getPersonId());
             preparedStatement.setBigDecimal(2, client.getDiscount());
             preparedStatement.setLong(3, companyId);
 
@@ -98,7 +98,7 @@ public class ClientRepositoryImp implements ClientRepository {
         Connection connection = CONNECTION_POOL.getConnection();
         String statement = "update clients SET person_id = ?, discount = ? WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
-            preparedStatement.setLong(1, client.getId());
+            preparedStatement.setLong(1, client.getPersonId());
             preparedStatement.setBigDecimal(2, client.getDiscount());
             preparedStatement.setLong(3, client.getClientId());
             preparedStatement.executeUpdate();
@@ -145,7 +145,7 @@ public class ClientRepositoryImp implements ClientRepository {
         client.setClientId(resultSet.getLong("client_id"));
         client.setDiscount(resultSet.getBigDecimal("discount"));
 
-        client.setId(resultSet.getLong("person_id"));
+        client.setPersonId(resultSet.getLong("person_id"));
         client.setName(resultSet.getString("name"));
         client.setSurname(resultSet.getString("surname"));
         client.setDob(resultSet.getDate("dob").toLocalDate());

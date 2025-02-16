@@ -18,6 +18,16 @@ public class Client extends Person {
     public Client() {
     }
 
+    @Override
+    public Long getPersonId() {
+        return super.getPersonId();
+    }
+
+    @Override
+    public void setPersonId(Long personId) {
+        super.setPersonId(personId);
+    }
+
     @XmlElement
     public Long getClientId() {
         return clientId;

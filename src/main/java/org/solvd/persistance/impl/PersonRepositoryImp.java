@@ -28,7 +28,7 @@ public class PersonRepositoryImp implements PersonRepository {
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             while (resultSet.next()) {
-                person.setId(resultSet.getLong(1));
+                person.setPersonId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException("Unable to create person.", e);
@@ -96,10 +96,10 @@ public class PersonRepositoryImp implements PersonRepository {
             preparedStatement.setDate(3, Date.valueOf(person.getDob()));
             preparedStatement.setString(4, person.getTelephoneNumber());
             preparedStatement.setLong(5, person.getHomeAddress().getId());
-            preparedStatement.setLong(6, person.getId());
+            preparedStatement.setLong(6, person.getPersonId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(String.format("Could not update person %d", person.getId()), e);
+            throw new RuntimeException(String.format("Could not update person %d", person.getPersonId()), e);
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
@@ -122,7 +122,7 @@ public class PersonRepositoryImp implements PersonRepository {
 
     protected Person mapRow(ResultSet resultSet) throws SQLException {
         Person person = new Person();
-        person.setId(resultSet.getLong("person_id"));
+        person.setPersonId(resultSet.getLong("person_id"));
         person.setName(resultSet.getString("name"));
         person.setSurname(resultSet.getString("surname"));
         person.setDob(resultSet.getDate("dob").toLocalDate());

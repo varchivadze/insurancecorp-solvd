@@ -2,6 +2,7 @@ package org.solvd.service.impl;
 
 import org.solvd.domain.services.InsuranceCompany;
 import org.solvd.persistance.InsuranceCompanyRepository;
+import org.solvd.persistance.impl.InsuranceCompanyMapperImp;
 import org.solvd.persistance.impl.InsuranceCompanyRepositoryImpl;
 import org.solvd.service.InsuranceCompanyService;
 
@@ -12,7 +13,8 @@ public class InsuranceCompanyServiceImp implements InsuranceCompanyService {
     private final InsuranceCompanyRepository insuranceCompanyRepository;
 
     public InsuranceCompanyServiceImp() {
-        this.insuranceCompanyRepository = new InsuranceCompanyRepositoryImpl();
+        this.insuranceCompanyRepository = new InsuranceCompanyMapperImp();
+//        this.insuranceCompanyRepository = new InsuranceCompanyRepositoryImpl();
     }
 
     @Override
